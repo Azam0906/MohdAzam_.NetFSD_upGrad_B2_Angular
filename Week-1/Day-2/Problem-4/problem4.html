@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <title>Course Enrollment</title>
+  </head>
+  <body>
+    <h1>Course Enrollment Form</h1>
+
+    <section>
+      <label for="progress">Enrollment Completion:</label><br >
+      <progress id="progress" value="50" max="100"></progress>
+      <p>Step 2 of 4 completed</p>
+    </section>
+
+    <hr />
+
+    <form action="#" method="post">
+      <label for="email">Email Address:</label>
+      <br>
+      <input type="email" id="email" name="email" required>
+      <br><br>
+
+      <label for="course">Select Course:</label><br >
+      <input type="text" id="course" name="course" list="course-list" required>
+
+      <datalist id="course-list">
+        <option value="HTML5"></option>
+        <option value="CSS"></option>
+        <option value="JavaScript"></option>
+        <option value=".NET Full Stack"></option>
+        <option value="Python"></option>
+      </datalist>
+      <br><br>
+
+      <label for="skill">Skill Level:</label><br>
+      <input type="range" id="skill" name="skill" min="1" max="5" value="2">
+      <br>
+
+      <meter min="1" max="3" value="2">Intermediate</meter>
+      <p>1 = Beginner | 2 = Intermediate | 3 = Advanced</p>
+
+      <br>
+      <label for="experience">Years of Experience:</label><br>
+      <input type="number" id="experience" name="experience" min="0" max="25" required>
+      <br><br>
+
+      <button type="submit">Enroll</button>
+    </form>
+  </body>
+</html>
