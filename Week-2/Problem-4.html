@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mini Expense Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        input, button {
+            padding: 6px;
+            margin: 4px;
+        }
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 8px;
+            text-align: center;
+        }
+        button.delete {
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Mini Expense Tracker</h2>
+
+<input type="text" id="title" placeholder="Expense Title">
+<input type="number" id="amount" placeholder="Amount">
+<input type="date" id="date">
+<button onclick="addExpense()">Add Expense</button>
+<button onclick="loadExpenses()">View Expenses</button>
+
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody id="expenseList"></tbody>
+</table>
+
+<script>
+    let db;
+
+    const request = indexedDB.open("ExpenseDB", 1);
+
+    request.onupgradeneeded = function (event) {
+        db = event.target.result;
+        if (!db.objectStoreNames.contains("expenses")) {
+            db.createObjectStore("expenses", { keyPath: "id", autoIncrement: true });
+        }
+    };
+
+    request.onsuccess = function (event) {
+        db = event.target.result;
+    };
+
+    request.onerror = function () {
+        alert("Database error");
+    };
+
+    function addExpense() {
+        const title = document.getElementById("title").value;
+        const amount = document.getElementById("amount").value;
+        const date = document.getElementById("date").value;
+
+        if (!title || !amount || !date) {
+            alert("All fields are required");
+            return;
+        }
+
+        const transaction = db.transaction(["expenses"], "readwrite");
+        const store = transaction.objectStore("expenses");
+
+        store.add({
+            title: title,
+            amount: amount,
+            date: date
+        });
+
+        transaction.oncomplete = function () {
+            document.getElementById("title").value = "";
+            document.getElementById("amount").value = "";
+            document.getElementById("date").value = "";
+            loadExpenses();
+        };
+
+        transaction.onerror = function () {
+            alert("Failed to add expense");
+        };
+    }
+
+    function loadExpenses() {
+        const list = document.getElementById("expenseList");
+        list.innerHTML = "";
+
+        const transaction = db.transaction(["expenses"], "readonly");
+        const store = transaction.objectStore("expenses");
+        const request = store.openCursor();
+
+        request.onsuccess = function (event) {
+            const cursor = event.target.result;
+            if (cursor) {
+                const row = document.createElement("tr");
+
+                row.innerHTML = `
+                    <td>${cursor.value.title}</td>
+                    <td>${cursor.value.amount}</td>
+                    <td>${cursor.value.date}</td>
+                    <td>
+                        <button class="delete" onclick="deleteExpense(${cursor.key})">
+                            Delete
+                        </button>
+                    </td>
+                `;
+
+                list.appendChild(row);
+                cursor.continue();
+            }
+        };
+
+        request.onerror = function () {
+            alert("Error fetching expenses");
+        };
+    }
+
+    function deleteExpense(id) {
+        const transaction = db.transaction(["expenses"], "readwrite");
+        const store = transaction.objectStore("expenses");
+
+        store.delete(id);
+
+        transaction.oncomplete = function () {
+            loadExpenses();
+        };
+
+        transaction.onerror = function () {
+            alert("Failed to delete expense");
+        };
+    }
+</script>
+
+</body>
+</html>
