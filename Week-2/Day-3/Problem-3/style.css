@@ -1,0 +1,22 @@
+body {
+    font-family: Arial;
+}
+
+.todo-app {
+    width: 300px;
+    margin: 50px auto;
+}
+
+li {
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: gray;
+}
+
+button {
+    margin-left: 5px;
+}

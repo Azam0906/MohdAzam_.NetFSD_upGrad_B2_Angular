@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Live Form Validation</title>
+</head>
+<body>
+
+  <h3>Registration Form</h3>
+
+  <label>Name:</label><br>
+  <input type="text" id="name" onchange="validateName()">
+  <p id="nameMsg"></p>
+
+  <label>Email:</label><br>
+  <input type="text" id="email" onchange="validateEmail()">
+  <p id="emailMsg"></p>
+
+  <label>Age:</label><br>
+  <input type="number" id="age" onchange="validateAge()">
+  <p id="ageMsg"></p>
+
+  <button onclick="saveData()">Register</button>
+  <p id="finalMsg"></p>
+
+  <script>
+    function validateName() {
+      const name = document.getElementById("name").value;
+      document.getElementById("nameMsg").innerText =
+        name === "" ? "Name cannot be empty" : "";
+    }
+
+    function validateEmail() {
+      const email = document.getElementById("email").value;
+      document.getElementById("emailMsg").innerText =
+        email.includes("@") ? "" : "Invalid email";
+    }
+
+    function validateAge() {
+      const age = document.getElementById("age").value;
+      document.getElementById("ageMsg").innerText =
+        age > 18 ? "" : "Age must be greater than 18";
+    }
+
+    function saveData() {
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const age = document.getElementById("age").value;
+
+      if (name && email.includes("@") && age > 18) {
+        sessionStorage.setItem("name", name);
+        sessionStorage.setItem("email", email);
+        sessionStorage.setItem("age", age);
+        document.getElementById("finalMsg").innerText = "Registration successful";
+      } else {
+        document.getElementById("finalMsg").innerText = "Please fix errors before submitting";
+      }
+    }
+  </script>
+
+</body>
+</html>

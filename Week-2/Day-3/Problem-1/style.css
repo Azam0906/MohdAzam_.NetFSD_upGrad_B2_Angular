@@ -1,0 +1,19 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+}
+
+.container {
+    margin-top: 100px;
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+#message {
+    margin-top: 15px;
+    color: green;
+}

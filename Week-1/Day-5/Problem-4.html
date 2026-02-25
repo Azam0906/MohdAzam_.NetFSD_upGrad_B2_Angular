@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Student Profile Manager</title>
+</head>
+<body>
+
+  <div id="profile"></div>
+
+  <button onclick="updateMarks(90)">Update Marks</button>
+
+  <script>
+    const student = {
+      name: "Mohd Azam",
+      rollNo: 101,
+      marks: 85
+    };
+
+    function updateStudentProfile(studentObj) {
+      const profileDiv = document.getElementById("profile");
+
+      profileDiv.innerHTML = `
+        <h3>Student Profile</h3>
+        <p>Name: ${studentObj.name}</p>
+        <p>Roll No: ${studentObj.rollNo}</p>
+        <p>Marks: ${studentObj.marks}</p>
+      `;
+    }
+
+    function updateMarks(newMarks) {
+      student.marks = newMarks;
+      updateStudentProfile(student);
+    }
+
+    updateStudentProfile(student);
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+body {
+    font-family: Arial;
+    transition: background 0.3s, color 0.3s;
+}
+
+.light {
+    background: white;
+    color: black;
+}
+
+.dark {
+    background: #121212;
+    color: white;
+}
+
+button {
+    margin: 50px;
+    padding: 10px 20px;
+}

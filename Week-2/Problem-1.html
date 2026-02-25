@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Personal Notes Saver</title>
+</head>
+<body>
+
+  <h3>Personal Notes</h3>
+
+  <textarea id="note" rows="6" cols="40"></textarea>
+  <br><br>
+
+  <button onclick="saveNote()">Save</button>
+  <button onclick="clearNote()">Clear</button>
+
+  <script>
+    const storedNote = localStorage.getItem("myNote");
+    if (storedNote) {
+      document.getElementById("note").value = storedNote;
+    }
+
+    function saveNote() {
+      const noteText = document.getElementById("note").value;
+      localStorage.setItem("myNote", noteText);
+    }
+
+    function clearNote() {
+      localStorage.removeItem("myNote");
+      document.getElementById("note").value = "";
+    }
+  </script>
+
+</body>
+</html>

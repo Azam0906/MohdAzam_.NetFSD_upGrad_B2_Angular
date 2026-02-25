@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Location-Based Weather Logger</title>
+</head>
+<body>
+
+  <h3>Location Logger</h3>
+
+  <button onclick="getLocation()">Get My Location</button>
+
+  <p id="status"></p>
+  <p id="coords"></p>
+
+  <h4>Location History (Last 5)</h4>
+  <ul id="history"></ul>
+
+  <script>
+    const STORAGE_KEY = "locationHistory";
+
+    function getLocation() {
+      if (!navigator.geolocation) {
+        document.getElementById("status").innerText = "Geolocation not supported";
+        return;
+      }
+
+      document.getElementById("status").innerText = "Fetching location...";
+
+      navigator.geolocation.getCurrentPosition(
+        successCallback,
+        errorCallback
+      );
+    }
+
+    function successCallback(position) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      document.getElementById("coords").innerText =
+        "Latitude: " + latitude + " , Longitude: " + longitude;
+
+      const newEntry = {
+        lat: latitude,
+        lon: longitude,
+        time: new Date().toLocaleString()
+      };
+
+      let history = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+
+      history.unshift(newEntry);
+
+      if (history.length > 5) {
+        history = history.slice(0, 5);
+      }
+
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(history));
+
+      displayHistory();
+      document.getElementById("status").innerText = "Location saved";
+    }
+
+    function errorCallback(error) {
+      let message = "";
+
+      if (error.code === error.PERMISSION_DENIED) {
+        message = "Permission denied by user";
+      } else if (error.code === error.TIMEOUT) {
+        message = "Location request timed out";
+      } else if (error.code === error.POSITION_UNAVAILABLE) {
+        message = "Location unavailable";
+      } else {
+        message = "Unknown error";
+      }
+
+      document.getElementById("status").innerText = message;
+    }
+
+    function displayHistory() {
+      const historyList = document.getElementById("history");
+      historyList.innerHTML = "";
+
+      const history = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+
+      history.forEach(function(item) {
+        const li = document.createElement("li");
+        li.innerText =
+          item.time + " → Lat: " + item.lat + ", Lon: " + item.lon;
+        historyList.appendChild(li);
+      });
+    }
+
+    displayHistory();
+  </script>
+
+</body>
+</html>

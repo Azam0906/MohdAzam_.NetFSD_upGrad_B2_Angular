@@ -1,0 +1,88 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f2f2f2;
+    font-family: Arial, sans-serif;
+}
+
+/* Outer calculator box */
+body > div {
+    background-color: #222;
+    padding: 20px;
+    border-radius: 10px;
+    width: 320px;
+}
+
+/* Display */
+#display {
+    width: 95%;
+    height: 50px;
+    font-size: 22px;
+    text-align: right;
+    padding: 8px;
+    margin-bottom: 12px;
+    border-radius: 5px;
+    border: none;
+}
+
+
+body > div > div {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+
+button {
+    height: 48px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    background-color: #444;
+    color: white;
+}
+
+
+button:hover {
+    background-color: #666;
+}
+
+
+#clear {
+    background-color: #d9534f;
+}
+
+#deleteElement {
+    background-color: #d16e11;
+}
+
+#result {
+    background-color: #f0ad4e;
+    grid-column: span 3;
+}
+
+/* ===================== */
+/* 📱 MEDIA QUERY */
+/* ===================== */
+@media (max-width: 480px) {
+
+    body > div {
+        width: 90%;
+        padding: 15px;
+    }
+
+    #display {
+        height: 45px;
+        font-size: 18px;
+    }
+
+    button {
+        height: 42px;
+        font-size: 14px;
+    }
+}

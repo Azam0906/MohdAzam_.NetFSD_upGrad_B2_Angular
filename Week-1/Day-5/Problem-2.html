@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Info Display</title>
+</head>
+<body>
+
+    <h2>User Information</h2>
+
+    <button type="button" onclick="showUser()">Display User Info</button>
+
+    <p id="name"></p>
+    <p id="age"></p>
+    <p id="city"></p>
+
+    <script>
+        function showUser() {
+            let user = {
+                name: "Azam",
+                age: 24,
+                city: "Delhi"
+            };
+
+            displayUserInfo(user);
+        }
+
+        function displayUserInfo(user) {
+            document.getElementById("name").innerText = "Name: " + user.name;
+            document.getElementById("age").innerText = "Age: " + user.age;
+            document.getElementById("city").innerText = "City: " + user.city;
+        }
+    </script>
+
+</body>
+</html>
