@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dyanamic FAQ Toggle Section</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .faq-container {
+            width: 450px;
+            /* border-color: aqua; */
+        }
+
+        .question {
+            background-color: #f2f2f2;
+            padding: 10px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .question.active {
+            background-color: #d9edf7;
+            font-weight: bold;
+        }
+
+        .answer {
+            display: none;
+            padding: 10px;
+            border-left: 3px solid #31708f;
+            background-color: #a9ddeb;
+        }
+    </style>
+</head>
+<body>
+
+<h3>Frequently Asked Questions</h3>
+
+<div class="faq-container">
+
+    <div class="faq-item">
+        <div class="question">What is jQuery?</div>
+        <div class="answer">jQuery is a JavaScript library that simplifies DOM manipulation.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">Why use jQuery?</div>
+        <div class="answer">It reduces code length and handles cross-browser issues.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">What is slideToggle()?</div>
+        <div class="answer">It shows or hides elements with a sliding animation.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">Is jQuery still used?</div>
+        <div class="answer">Yes, many legacy and simple projects still use jQuery.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">Can jQuery work with CSS?</div>
+        <div class="answer">Yes, jQuery can add, remove, and toggle CSS classes.</div>
+    </div>
+
+</div>
+
+<script>
+$(document).ready(function () {
+
+    $(".question").click(function () {
+
+        // toggle current answer
+        $(this).next(".answer").slideToggle();
+
+        // toggle highlight
+        $(this).toggleClass("active");
+    });
+
+});
+</script>
+
+</body>
+</html>
