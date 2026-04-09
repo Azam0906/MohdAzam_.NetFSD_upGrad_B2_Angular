@@ -1,0 +1,22 @@
+﻿@model List<ContactApp.Models.ContactInfo>
+<h2>Contacts</h2>
+
+<table border="1">
+<tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Email</th>
+</tr>
+
+@foreach (var c in Model)
+{
+<tr>
+    <td>@c.ContactId</td>
+    <td>@c.FirstName</td>
+    <td>@c.EmailId</td>
+</tr>
+}
+</table>
+
+<a href="/Contact/AddContact">Add Contact</a>
+<a asp-controller="Contact" asp-action="SearchContact">Search Contact</a>

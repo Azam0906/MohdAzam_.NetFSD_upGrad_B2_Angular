@@ -1,0 +1,16 @@
+﻿@model ContactApp.Models.ContactInfo
+
+<h2>Contact Details</h2>
+
+@if (Model != null)
+{
+    <p><b>ID:</b> @Model.ContactId</p>
+    <p><b>Name:</b> @Model.FirstName @Model.LastName</p>
+    <p><b>Email:</b> @Model.EmailId</p>
+    <p><b>Company:</b> @Model.CompanyName</p>
+    <p><b>Mobile:</b> @Model.MobileNo</p>
+}
+else
+{
+    <h3 style="color:red;">Contact Not Found</h3>
+}

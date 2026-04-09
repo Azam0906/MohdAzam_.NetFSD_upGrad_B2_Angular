@@ -1,0 +1,12 @@
+C:\Users\Ajay\source\repos\Week8Day1Day2\ContactManagement\DataAccessLayer\bin\Debug\net8.0\DataAccessLayer.deps.json
+C:\Users\Ajay\source\repos\Week8Day1Day2\ContactManagement\DataAccessLayer\bin\Debug\net8.0\DataAccessLayer.dll
+C:\Users\Ajay\source\repos\Week8Day1Day2\ContactManagement\DataAccessLayer\bin\Debug\net8.0\DataAccessLayer.pdb
+C:\Users\Ajay\source\repos\Week8Day1Day2\ContactManagement\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.csproj.AssemblyReference.cache
+C:\Users\Ajay\source\repos\Week8Day1Day2\ContactManagement\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ajay\source\repos\Week8Day1Day2\ContactManagement\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.AssemblyInfoInputs.cache
+C:\Users\Ajay\source\repos\Week8Day1Day2\ContactManagement\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.AssemblyInfo.cs
+C:\Users\Ajay\source\repos\Week8Day1Day2\ContactManagement\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\Ajay\source\repos\Week8Day1Day2\ContactManagement\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.dll
+C:\Users\Ajay\source\repos\Week8Day1Day2\ContactManagement\DataAccessLayer\obj\Debug\net8.0\refint\DataAccessLayer.dll
+C:\Users\Ajay\source\repos\Week8Day1Day2\ContactManagement\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.pdb
+C:\Users\Ajay\source\repos\Week8Day1Day2\ContactManagement\DataAccessLayer\obj\Debug\net8.0\ref\DataAccessLayer.dll
